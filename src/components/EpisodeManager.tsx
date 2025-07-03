@@ -39,6 +39,11 @@ export default function EpisodeManager({ selectedEpisodeId, onEpisodeSelect }: E
     }
   };
 
+  const handleEpisodeClick = (episodeId: string) => {
+    console.log('Episode manager - episode clicked:', episodeId);
+    onEpisodeSelect(episodeId);
+  };
+
   if (selectedEpisode) {
     return (
       <EpisodeDetails 
@@ -126,7 +131,7 @@ export default function EpisodeManager({ selectedEpisodeId, onEpisodeSelect }: E
             <EpisodeCard
               key={episode.id}
               episode={episode}
-              onClick={() => onEpisodeSelect(episode.id)}
+              onClick={() => handleEpisodeClick(episode.id)}
             />
           ))}
         </div>

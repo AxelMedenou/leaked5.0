@@ -45,15 +45,22 @@ export default function Dashboard() {
   ];
 
   const handleEpisodeClick = (episodeId: string) => {
+    console.log('Dashboard - episode clicked:', episodeId);
     setSelectedEpisodeId(episodeId);
     setActiveSection(NAVIGATION_SECTIONS.EPISODES);
   };
 
   const handleSectionChange = (sectionId: string) => {
+    console.log('Dashboard - section changed:', sectionId);
     setActiveSection(sectionId);
     if (sectionId !== NAVIGATION_SECTIONS.EPISODES) {
       setSelectedEpisodeId(null);
     }
+  };
+
+  const handleEpisodeSelect = (episodeId: string | null) => {
+    console.log('Dashboard - episode selected:', episodeId);
+    setSelectedEpisodeId(episodeId);
   };
 
   return (
@@ -117,7 +124,7 @@ export default function Dashboard() {
         {activeSection === NAVIGATION_SECTIONS.EPISODES && (
           <EpisodeManager 
             selectedEpisodeId={selectedEpisodeId}
-            onEpisodeSelect={setSelectedEpisodeId}
+            onEpisodeSelect={handleEpisodeSelect}
           />
         )}
 
